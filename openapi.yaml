@@ -1312,6 +1312,10 @@ components:
           type: string
           description: The password for my.teslamotors.com
           example: edisonsux
+        refresh_token:
+          type: string
+          description: The refresh token
+          example: abc
     CreateAccessTokenResponse:
       title: Get an Access Token response
       required:
