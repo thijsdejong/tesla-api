@@ -25,19 +25,19 @@ class CreateAccessTokenRequest
     /**
      * The email for my.teslamotors.com
      *
-     * @var string
+     * @var string|null
      */
     protected $email;
     /**
      * The password for my.teslamotors.com
      *
-     * @var string
+     * @var string|null
      */
     protected $password;
     /**
      * The refresh token
      *
-     * @var string
+     * @var string|null
      */
     protected $refreshToken;
     /**
@@ -106,20 +106,20 @@ class CreateAccessTokenRequest
     /**
      * The email for my.teslamotors.com
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmail() : string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
     /**
      * The email for my.teslamotors.com
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(?string $email) : self
     {
         $this->email = $email;
         return $this;
@@ -127,20 +127,20 @@ class CreateAccessTokenRequest
     /**
      * The password for my.teslamotors.com
      *
-     * @return string
+     * @return string|null
      */
-    public function getPassword() : string
+    public function getPassword() : ?string
     {
         return $this->password;
     }
     /**
      * The password for my.teslamotors.com
      *
-     * @param string $password
+     * @param string|null $password
      *
      * @return self
      */
-    public function setPassword(string $password) : self
+    public function setPassword(?string $password) : self
     {
         $this->password = $password;
         return $this;
@@ -148,20 +148,20 @@ class CreateAccessTokenRequest
     /**
      * The refresh token
      *
-     * @return string
+     * @return string|null
      */
-    public function getRefreshToken() : string
+    public function getRefreshToken() : ?string
     {
         return $this->refreshToken;
     }
     /**
      * The refresh token
      *
-     * @param string $refreshToken
+     * @param string|null $refreshToken
      *
      * @return self
      */
-    public function setRefreshToken(string $refreshToken) : self
+    public function setRefreshToken(?string $refreshToken) : self
     {
         $this->refreshToken = $refreshToken;
         return $this;

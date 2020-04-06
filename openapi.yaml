@@ -1306,14 +1306,17 @@ components:
           example: "123"
         email:
           type: string
+          nullable: true
           description: The email for my.teslamotors.com
           example: elon@teslamotors.com
         password:
           type: string
+          nullable: true
           description: The password for my.teslamotors.com
           example: edisonsux
         refresh_token:
           type: string
+          nullable: true
           description: The refresh token
           example: abc
     CreateAccessTokenResponse:
