@@ -1,5 +1,5 @@
 {
-	"name" : "desyc/tesla-api",
+	"name" : "desync/tesla-api",
 	"description" : "Tesla API library for PHP",
 	"type" : "library",
 	"require" : {
