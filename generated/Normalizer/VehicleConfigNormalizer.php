@@ -25,7 +25,7 @@ class VehicleConfigNormalizer implements DenormalizerInterface, NormalizerInterf
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Tesla\Api\Model\VehicleConfig();
         if (property_exists($data, 'can_actuate_trunks')) {
@@ -34,20 +34,32 @@ class VehicleConfigNormalizer implements DenormalizerInterface, NormalizerInterf
         if (property_exists($data, 'can_accept_navigation_requests')) {
             $object->setCanAcceptNavigationRequests($data->{'can_accept_navigation_requests'});
         }
-        if (property_exists($data, 'car_special_type')) {
+        if (property_exists($data, 'car_special_type') && $data->{'car_special_type'} !== null) {
             $object->setCarSpecialType($data->{'car_special_type'});
         }
-        if (property_exists($data, 'car_type')) {
+        elseif (property_exists($data, 'car_special_type') && $data->{'car_special_type'} === null) {
+            $object->setCarSpecialType(null);
+        }
+        if (property_exists($data, 'car_type') && $data->{'car_type'} !== null) {
             $object->setCarType($data->{'car_type'});
         }
-        if (property_exists($data, 'charge_port_type')) {
+        elseif (property_exists($data, 'car_type') && $data->{'car_type'} === null) {
+            $object->setCarType(null);
+        }
+        if (property_exists($data, 'charge_port_type') && $data->{'charge_port_type'} !== null) {
             $object->setChargePortType($data->{'charge_port_type'});
+        }
+        elseif (property_exists($data, 'charge_port_type') && $data->{'charge_port_type'} === null) {
+            $object->setChargePortType(null);
         }
         if (property_exists($data, 'eu_vehicle')) {
             $object->setEuVehicle($data->{'eu_vehicle'});
         }
-        if (property_exists($data, 'exterior_color')) {
+        if (property_exists($data, 'exterior_color') && $data->{'exterior_color'} !== null) {
             $object->setExteriorColor($data->{'exterior_color'});
+        }
+        elseif (property_exists($data, 'exterior_color') && $data->{'exterior_color'} === null) {
+            $object->setExteriorColor(null);
         }
         if (property_exists($data, 'has_ludicrous_mode')) {
             $object->setHasLudicrousMode($data->{'has_ludicrous_mode'});
@@ -55,44 +67,74 @@ class VehicleConfigNormalizer implements DenormalizerInterface, NormalizerInterf
         if (property_exists($data, 'motorized_charge_port')) {
             $object->setMotorizedChargePort($data->{'motorized_charge_port'});
         }
-        if (property_exists($data, 'perf_config')) {
+        if (property_exists($data, 'perf_config') && $data->{'perf_config'} !== null) {
             $object->setPerfConfig($data->{'perf_config'});
+        }
+        elseif (property_exists($data, 'perf_config') && $data->{'perf_config'} === null) {
+            $object->setPerfConfig(null);
         }
         if (property_exists($data, 'plg')) {
             $object->setPlg($data->{'plg'});
         }
-        if (property_exists($data, 'rear_seat_heaters')) {
+        if (property_exists($data, 'rear_seat_heaters') && $data->{'rear_seat_heaters'} !== null) {
             $object->setRearSeatHeaters($data->{'rear_seat_heaters'});
         }
-        if (property_exists($data, 'rear_seat_type')) {
+        elseif (property_exists($data, 'rear_seat_heaters') && $data->{'rear_seat_heaters'} === null) {
+            $object->setRearSeatHeaters(null);
+        }
+        if (property_exists($data, 'rear_seat_type') && $data->{'rear_seat_type'} !== null) {
             $object->setRearSeatType($data->{'rear_seat_type'});
+        }
+        elseif (property_exists($data, 'rear_seat_type') && $data->{'rear_seat_type'} === null) {
+            $object->setRearSeatType(null);
         }
         if (property_exists($data, 'rhd')) {
             $object->setRhd($data->{'rhd'});
         }
-        if (property_exists($data, 'roof_color')) {
+        if (property_exists($data, 'roof_color') && $data->{'roof_color'} !== null) {
             $object->setRoofColor($data->{'roof_color'});
         }
-        if (property_exists($data, 'seat_type')) {
+        elseif (property_exists($data, 'roof_color') && $data->{'roof_color'} === null) {
+            $object->setRoofColor(null);
+        }
+        if (property_exists($data, 'seat_type') && $data->{'seat_type'} !== null) {
             $object->setSeatType($data->{'seat_type'});
         }
-        if (property_exists($data, 'spoiler_type')) {
+        elseif (property_exists($data, 'seat_type') && $data->{'seat_type'} === null) {
+            $object->setSeatType(null);
+        }
+        if (property_exists($data, 'spoiler_type') && $data->{'spoiler_type'} !== null) {
             $object->setSpoilerType($data->{'spoiler_type'});
         }
-        if (property_exists($data, 'sun_roof_installed')) {
+        elseif (property_exists($data, 'spoiler_type') && $data->{'spoiler_type'} === null) {
+            $object->setSpoilerType(null);
+        }
+        if (property_exists($data, 'sun_roof_installed') && $data->{'sun_roof_installed'} !== null) {
             $object->setSunRoofInstalled($data->{'sun_roof_installed'});
         }
-        if (property_exists($data, 'third_row_seats')) {
+        elseif (property_exists($data, 'sun_roof_installed') && $data->{'sun_roof_installed'} === null) {
+            $object->setSunRoofInstalled(null);
+        }
+        if (property_exists($data, 'third_row_seats') && $data->{'third_row_seats'} !== null) {
             $object->setThirdRowSeats($data->{'third_row_seats'});
+        }
+        elseif (property_exists($data, 'third_row_seats') && $data->{'third_row_seats'} === null) {
+            $object->setThirdRowSeats(null);
         }
         if (property_exists($data, 'timestamp')) {
             $object->setTimestamp($data->{'timestamp'});
         }
-        if (property_exists($data, 'trim_badging')) {
+        if (property_exists($data, 'trim_badging') && $data->{'trim_badging'} !== null) {
             $object->setTrimBadging($data->{'trim_badging'});
         }
-        if (property_exists($data, 'wheel_type')) {
+        elseif (property_exists($data, 'trim_badging') && $data->{'trim_badging'} === null) {
+            $object->setTrimBadging(null);
+        }
+        if (property_exists($data, 'wheel_type') && $data->{'wheel_type'} !== null) {
             $object->setWheelType($data->{'wheel_type'});
+        }
+        elseif (property_exists($data, 'wheel_type') && $data->{'wheel_type'} === null) {
+            $object->setWheelType(null);
         }
         return $object;
     }

@@ -25,7 +25,7 @@ class CreateAccessTokenRequestNormalizer implements DenormalizerInterface, Norma
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Tesla\Api\Model\CreateAccessTokenRequest();
         if (property_exists($data, 'grant_type')) {
@@ -42,6 +42,9 @@ class CreateAccessTokenRequestNormalizer implements DenormalizerInterface, Norma
         }
         if (property_exists($data, 'password')) {
             $object->setPassword($data->{'password'});
+        }
+        if (property_exists($data, 'refresh_token')) {
+            $object->setRefreshToken($data->{'refresh_token'});
         }
         return $object;
     }
@@ -62,6 +65,9 @@ class CreateAccessTokenRequestNormalizer implements DenormalizerInterface, Norma
         }
         if (null !== $object->getPassword()) {
             $data->{'password'} = $object->getPassword();
+        }
+        if (null !== $object->getRefreshToken()) {
+            $data->{'refresh_token'} = $object->getRefreshToken();
         }
         return $data;
     }

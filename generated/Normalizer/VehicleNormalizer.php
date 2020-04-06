@@ -25,11 +25,14 @@ class VehicleNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Tesla\Api\Model\Vehicle();
-        if (property_exists($data, 'color')) {
+        if (property_exists($data, 'color') && $data->{'color'} !== null) {
             $object->setColor($data->{'color'});
+        }
+        elseif (property_exists($data, 'color') && $data->{'color'} === null) {
+            $object->setColor(null);
         }
         if (property_exists($data, 'display_name')) {
             $object->setDisplayName($data->{'display_name'});

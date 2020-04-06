@@ -25,41 +25,74 @@ class DriveStateNormalizer implements DenormalizerInterface, NormalizerInterface
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Tesla\Api\Model\DriveState();
-        if (property_exists($data, 'shift_state')) {
+        if (property_exists($data, 'shift_state') && $data->{'shift_state'} !== null) {
             $object->setShiftState($data->{'shift_state'});
         }
-        if (property_exists($data, 'speed')) {
+        elseif (property_exists($data, 'shift_state') && $data->{'shift_state'} === null) {
+            $object->setShiftState(null);
+        }
+        if (property_exists($data, 'speed') && $data->{'speed'} !== null) {
             $object->setSpeed($data->{'speed'});
         }
-        if (property_exists($data, 'power')) {
+        elseif (property_exists($data, 'speed') && $data->{'speed'} === null) {
+            $object->setSpeed(null);
+        }
+        if (property_exists($data, 'power') && $data->{'power'} !== null) {
             $object->setPower($data->{'power'});
         }
-        if (property_exists($data, 'latitude')) {
+        elseif (property_exists($data, 'power') && $data->{'power'} === null) {
+            $object->setPower(null);
+        }
+        if (property_exists($data, 'latitude') && $data->{'latitude'} !== null) {
             $object->setLatitude($data->{'latitude'});
         }
-        if (property_exists($data, 'longitude')) {
+        elseif (property_exists($data, 'latitude') && $data->{'latitude'} === null) {
+            $object->setLatitude(null);
+        }
+        if (property_exists($data, 'longitude') && $data->{'longitude'} !== null) {
             $object->setLongitude($data->{'longitude'});
         }
-        if (property_exists($data, 'heading')) {
+        elseif (property_exists($data, 'longitude') && $data->{'longitude'} === null) {
+            $object->setLongitude(null);
+        }
+        if (property_exists($data, 'heading') && $data->{'heading'} !== null) {
             $object->setHeading($data->{'heading'});
         }
-        if (property_exists($data, 'gps_as_of')) {
+        elseif (property_exists($data, 'heading') && $data->{'heading'} === null) {
+            $object->setHeading(null);
+        }
+        if (property_exists($data, 'gps_as_of') && $data->{'gps_as_of'} !== null) {
             $object->setGpsAsOf($data->{'gps_as_of'});
         }
-        if (property_exists($data, 'native_location_supported')) {
+        elseif (property_exists($data, 'gps_as_of') && $data->{'gps_as_of'} === null) {
+            $object->setGpsAsOf(null);
+        }
+        if (property_exists($data, 'native_location_supported') && $data->{'native_location_supported'} !== null) {
             $object->setNativeLocationSupported($data->{'native_location_supported'});
         }
-        if (property_exists($data, 'native_latitude')) {
+        elseif (property_exists($data, 'native_location_supported') && $data->{'native_location_supported'} === null) {
+            $object->setNativeLocationSupported(null);
+        }
+        if (property_exists($data, 'native_latitude') && $data->{'native_latitude'} !== null) {
             $object->setNativeLatitude($data->{'native_latitude'});
         }
-        if (property_exists($data, 'native_longitude')) {
+        elseif (property_exists($data, 'native_latitude') && $data->{'native_latitude'} === null) {
+            $object->setNativeLatitude(null);
+        }
+        if (property_exists($data, 'native_longitude') && $data->{'native_longitude'} !== null) {
             $object->setNativeLongitude($data->{'native_longitude'});
         }
-        if (property_exists($data, 'native_type')) {
+        elseif (property_exists($data, 'native_longitude') && $data->{'native_longitude'} === null) {
+            $object->setNativeLongitude(null);
+        }
+        if (property_exists($data, 'native_type') && $data->{'native_type'} !== null) {
             $object->setNativeType($data->{'native_type'});
+        }
+        elseif (property_exists($data, 'native_type') && $data->{'native_type'} === null) {
+            $object->setNativeType(null);
         }
         if (property_exists($data, 'timestamp')) {
             $object->setTimestamp($data->{'timestamp'});

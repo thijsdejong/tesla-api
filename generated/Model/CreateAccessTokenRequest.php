@@ -35,6 +35,12 @@ class CreateAccessTokenRequest
      */
     protected $password;
     /**
+     * The refresh token
+     *
+     * @var string
+     */
+    protected $refreshToken;
+    /**
      * The type of oAuth grant. Always "password"
      *
      * @return string
@@ -137,6 +143,27 @@ class CreateAccessTokenRequest
     public function setPassword(string $password) : self
     {
         $this->password = $password;
+        return $this;
+    }
+    /**
+     * The refresh token
+     *
+     * @return string
+     */
+    public function getRefreshToken() : string
+    {
+        return $this->refreshToken;
+    }
+    /**
+     * The refresh token
+     *
+     * @param string $refreshToken
+     *
+     * @return self
+     */
+    public function setRefreshToken(string $refreshToken) : self
+    {
+        $this->refreshToken = $refreshToken;
         return $this;
     }
 }

@@ -25,11 +25,14 @@ class VehicleDataResponseResponseNormalizer implements DenormalizerInterface, No
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Tesla\Api\Model\VehicleDataResponseResponse();
-        if (property_exists($data, 'color')) {
+        if (property_exists($data, 'color') && $data->{'color'} !== null) {
             $object->setColor($data->{'color'});
+        }
+        elseif (property_exists($data, 'color') && $data->{'color'} === null) {
+            $object->setColor(null);
         }
         if (property_exists($data, 'display_name')) {
             $object->setDisplayName($data->{'display_name'});
@@ -68,11 +71,17 @@ class VehicleDataResponseResponseNormalizer implements DenormalizerInterface, No
         if (property_exists($data, 'calendar_enabled')) {
             $object->setCalendarEnabled($data->{'calendar_enabled'});
         }
-        if (property_exists($data, 'backseat_token')) {
+        if (property_exists($data, 'backseat_token') && $data->{'backseat_token'} !== null) {
             $object->setBackseatToken($data->{'backseat_token'});
         }
-        if (property_exists($data, 'backseat_token_updated_at')) {
+        elseif (property_exists($data, 'backseat_token') && $data->{'backseat_token'} === null) {
+            $object->setBackseatToken(null);
+        }
+        if (property_exists($data, 'backseat_token_updated_at') && $data->{'backseat_token_updated_at'} !== null) {
             $object->setBackseatTokenUpdatedAt($data->{'backseat_token_updated_at'});
+        }
+        elseif (property_exists($data, 'backseat_token_updated_at') && $data->{'backseat_token_updated_at'} === null) {
+            $object->setBackseatTokenUpdatedAt(null);
         }
         if (property_exists($data, 'gui_settings')) {
             $object->setGuiSettings($this->denormalizer->denormalize($data->{'gui_settings'}, 'Tesla\\Api\\Model\\GuiState', 'json', $context));
