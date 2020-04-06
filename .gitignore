@@ -8,3 +8,4 @@ phpunit.xml
 .settings
 .project
 generated_ci
+.idea
