@@ -22,6 +22,15 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function revokeOauthToken(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Tesla\Api\Endpoint\RevokeOauthToken(), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
      * @return null|\Tesla\Api\Model\GetVehiclesResponse|\Psr\Http\Message\ResponseInterface
      */
     public function getVehicles(string $fetch = self::FETCH_OBJECT)

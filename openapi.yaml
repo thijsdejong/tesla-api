@@ -31,6 +31,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/CreateAccessTokenResponse'
       x-codegen-request-body-name: body
+  /oauth/revoke:
+    post:
+      tags:
+        - Authentication
+      summary: Revoke an Access Token
+      description: Revokes the {access_token} issued by the token command
+      operationId: RevokeOauthToken
+      responses:
+        200:
+          description: ""
   /api/1/vehicles:
     get:
       tags:
