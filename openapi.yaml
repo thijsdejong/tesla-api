@@ -38,9 +38,16 @@ paths:
       summary: Revoke an Access Token
       description: Revokes the {access_token} issued by the token command
       operationId: RevokeOauthToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RevokeAccessTokenRequest'
+        required: true
       responses:
         200:
           description: ""
+      x-codegen-request-body-name: body
   /api/1/vehicles:
     get:
       tags:
@@ -1367,6 +1374,14 @@ components:
         expires_in: 7776000
         created_at: 1457385291
         refresh_token: cba321
+    RevokeAccessTokenRequest:
+      title: Get a Revoke Access Token request
+      type: object
+      properties:
+        token:
+          type: string
+          description: The access token
+          example: abc
     SetValetRequest:
       title: Set Valet Mode
       type: object
